@@ -171,7 +171,7 @@ body {
   min-width: 0;
   align-items: baseline;
   gap: 6px;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
@@ -187,7 +187,7 @@ body {
 }
 
 .bui-brand-lockup-compact .bui-brand-wordmark {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .bui-theme-toggle {
