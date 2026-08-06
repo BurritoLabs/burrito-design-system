@@ -120,11 +120,12 @@
   --bui-radius-panel: 12px;
   --bui-radius-modal: 14px;
   --bui-radius-pill: 999px;
-  --bui-chain-trigger-height: 40px;
-  --bui-chain-trigger-min-width: 98px;
-  --bui-chain-trigger-mobile-height: 44px;
-  --bui-chain-trigger-mobile-width: 50px;
-  --bui-chain-logo-size: 24px;
+  --bui-chain-trigger-height: 32px;
+  --bui-chain-trigger-min-width: 86px;
+  --bui-chain-trigger-mobile-height: 34px;
+  --bui-chain-trigger-mobile-width: 44px;
+  --bui-chain-trigger-radius: var(--bui-radius-pill);
+  --bui-chain-logo-size: 22px;
   --bui-chain-menu-width: 208px;
   --bui-chain-menu-radius: 12px;
   --bui-chain-option-min-height: 46px;
@@ -205,12 +206,12 @@ body {
 
 .bui-theme-toggle {
   display: inline-grid;
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
   place-items: center;
   border: 1px solid var(--bui-color-border-strong);
-  border-radius: var(--bui-radius-control);
+  border-radius: var(--bui-radius-pill);
   background: var(--bui-color-surface);
   color: var(--bui-color-text-secondary);
   cursor: pointer;
@@ -318,8 +319,8 @@ body {
 }
 
 .bui-theme-toggle svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.75;
@@ -330,9 +331,9 @@ body {
 @media (max-width: 640px) {
   .bui-theme-toggle,
   .bui-theme-switcher-trigger {
-    width: 44px;
-    height: 44px;
-    flex-basis: 44px;
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
   }
 }
 
