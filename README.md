@@ -21,7 +21,7 @@ Import tokens once at the application root:
 import "@burritolabs/ui/tokens.css";
 ```
 
-Initialize the theme before hydration, then wrap client UI with `BurritoThemeProvider` and render `BurritoThemeToggle` in the product header.
+Initialize the theme before hydration, then wrap client UI with `BurritoThemeProvider` and render `BurritoThemeSwitcher` in the product header. The switcher exposes System, Light, and Dark while keeping a 40 px desktop / 44 px mobile trigger.
 
 ## Governance
 
@@ -30,6 +30,8 @@ Initialize the theme before hydration, then wrap client UI with `BurritoThemePro
 - New colors and spacing values require a token change and contrast validation here first.
 - Releases use semantic versions and a changelog. Applications pin a tested version at build time.
 - Runtime CDN styling is prohibited; applications bundle the pinned package for availability and reproducibility.
+- `docs/brand.md` owns logo sizing, clear-space, placement, favicon, and app-icon rules.
+- `docs/distribution.md` owns package releases and immutable consumer upgrades.
 
 ## Visual specifications
 
@@ -37,4 +39,3 @@ Initialize the theme before hydration, then wrap client UI with `BurritoThemePro
 - `concepts/monitor-overview-light.png`
 
 These files define the first production pilot. They are references for visual regression, not shipped UI assets.
-

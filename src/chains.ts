@@ -24,11 +24,10 @@ export const BURRITO_CHAINS: readonly BurritoChain[] = [
     symbol: "LUNA",
     chainId: "phoenix-1",
     accent: "#F97316",
-    accessibleAccentLight: "#C65308",
+    accessibleAccentLight: "#B94700",
   },
 ] as const;
 
 export function getBurritoChain(slug: BurritoChainSlug) {
   return BURRITO_CHAINS.find((chain) => chain.slug === slug) ?? BURRITO_CHAINS[0];
 }
-

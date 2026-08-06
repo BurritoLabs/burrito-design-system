@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -39,6 +40,12 @@ export function applyBurritoTheme(theme: BurritoTheme) {
   if (meta) meta.content = theme === "dark" ? DARK_THEME_COLOR : LIGHT_THEME_COLOR;
 }
 
+function applyBurritoThemePreference(preference: BurritoThemePreference, theme: BurritoTheme) {
+  if (typeof document === "undefined") return;
+  document.documentElement.dataset.themePreference = preference;
+  applyBurritoTheme(theme);
+}
+
 type BurritoThemeContextValue = {
   theme: BurritoTheme;
   preference: BurritoThemePreference;
@@ -56,7 +63,7 @@ export function BurritoThemeProvider({ children }: { children: ReactNode }) {
     const nextTheme = resolveBurritoTheme(nextPreference);
     setPreferenceState(nextPreference);
     setTheme(nextTheme);
-    applyBurritoTheme(nextTheme);
+    applyBurritoThemePreference(nextPreference, nextTheme);
   }, []);
 
   useEffect(() => {
@@ -71,6 +78,14 @@ export function BurritoThemeProvider({ children }: { children: ReactNode }) {
     media.addEventListener("change", handleChange);
     return () => media.removeEventListener("change", handleChange);
   }, [commit, preference]);
+
+  useEffect(() => {
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key === BURRITO_THEME_STORAGE_KEY) commit(normalizePreference(event.newValue));
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, [commit]);
 
   const setPreference = useCallback(
     (nextPreference: BurritoThemePreference) => {
@@ -113,6 +128,87 @@ export function BurritoThemeToggle({ className = "" }: { className?: string }) {
     >
       {theme === "dark" ? <SunIcon /> : <MoonIcon />}
     </button>
+  );
+}
+
+const themeOptions: readonly { value: BurritoThemePreference; label: string }[] = [
+  { value: "system", label: "System" },
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+];
+
+export function BurritoThemeSwitcher({ className = "" }: { className?: string }) {
+  const { preference, setPreference } = useBurritoTheme();
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const label = themeOptions.find((option) => option.value === preference)?.label ?? "System";
+
+  useEffect(() => {
+    if (!open) return;
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
+  return (
+    <div className={`bui-theme-switcher ${className}`.trim()} ref={rootRef}>
+      <button
+        type="button"
+        className="bui-theme-switcher-trigger"
+        aria-label={`Theme: ${label}`}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        title={`Theme: ${label}`}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <ThemeIcon preference={preference} />
+      </button>
+      {open ? (
+        <div className="bui-theme-menu" role="menu" aria-label="Theme preference">
+          {themeOptions.map((option) => (
+            <button
+              type="button"
+              className="bui-theme-option"
+              role="menuitemradio"
+              aria-checked={preference === option.value}
+              key={option.value}
+              onClick={() => {
+                setPreference(option.value);
+                setOpen(false);
+              }}
+            >
+              <ThemeIcon preference={option.value} />
+              <span>{option.label}</span>
+              {preference === option.value ? <span className="bui-theme-option-check" aria-hidden="true" /> : <span />}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function ThemeIcon({ preference }: { preference: BurritoThemePreference }) {
+  if (preference === "light") return <SunIcon />;
+  if (preference === "dark") return <MoonIcon />;
+  return <SystemIcon />;
+}
+
+function SystemIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="13" rx="2" />
+      <path d="M8 21h8M12 17v4" />
+    </svg>
   );
 }
 
