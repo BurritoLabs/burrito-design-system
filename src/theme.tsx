@@ -28,6 +28,43 @@ function normalizePreference(value: string | null): BurritoThemePreference {
   return value === "light" || value === "dark" || value === "system" ? value : "system";
 }
 
+function readStoredPreference(): BurritoThemePreference {
+  if (typeof window === "undefined") return "system";
+  try {
+    const localPreference = normalizePreference(window.localStorage.getItem(BURRITO_THEME_STORAGE_KEY));
+    if (localPreference !== "system" || window.localStorage.getItem(BURRITO_THEME_STORAGE_KEY) === "system") {
+      return localPreference;
+    }
+  } catch {
+    // Restricted browsers can deny localStorage access entirely.
+  }
+  try {
+    return normalizePreference(window.sessionStorage.getItem(BURRITO_THEME_STORAGE_KEY));
+  } catch {
+    return "system";
+  }
+}
+
+function storePreference(preference: BurritoThemePreference) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(BURRITO_THEME_STORAGE_KEY, preference);
+    try {
+      window.sessionStorage.removeItem(BURRITO_THEME_STORAGE_KEY);
+    } catch {
+      // The durable preference was stored; a stale session fallback is harmless.
+    }
+    return;
+  } catch {
+    // Fall back when storage is full or disabled for this origin.
+  }
+  try {
+    window.sessionStorage.setItem(BURRITO_THEME_STORAGE_KEY, preference);
+  } catch {
+    // The in-memory theme still applies even when all browser storage is denied.
+  }
+}
+
 export function resolveBurritoTheme(preference: BurritoThemePreference): BurritoTheme {
   return preference === "system" ? systemTheme() : preference;
 }
@@ -67,8 +104,7 @@ export function BurritoThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const initialPreference = normalizePreference(window.localStorage.getItem(BURRITO_THEME_STORAGE_KEY));
-    commit(initialPreference);
+    commit(readStoredPreference());
   }, [commit]);
 
   useEffect(() => {
@@ -89,7 +125,7 @@ export function BurritoThemeProvider({ children }: { children: ReactNode }) {
 
   const setPreference = useCallback(
     (nextPreference: BurritoThemePreference) => {
-      window.localStorage.setItem(BURRITO_THEME_STORAGE_KEY, nextPreference);
+      storePreference(nextPreference);
       commit(nextPreference);
     },
     [commit],
