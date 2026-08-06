@@ -120,6 +120,14 @@
   --bui-radius-panel: 12px;
   --bui-radius-modal: 14px;
   --bui-radius-pill: 999px;
+  --bui-chain-trigger-height: 40px;
+  --bui-chain-trigger-min-width: 98px;
+  --bui-chain-trigger-mobile-height: 44px;
+  --bui-chain-trigger-mobile-width: 50px;
+  --bui-chain-logo-size: 24px;
+  --bui-chain-menu-width: 208px;
+  --bui-chain-menu-radius: 12px;
+  --bui-chain-option-min-height: 46px;
   --bui-duration-fast: 120ms;
   --bui-duration-normal: 180ms;
   --bui-duration-slow: 240ms;
