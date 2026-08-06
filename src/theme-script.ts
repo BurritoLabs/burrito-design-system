@@ -1,0 +1,3 @@
+export const BURRITO_THEME_STORAGE_KEY = "burrito:theme";
+
+export const burritoThemeBootstrapScript = `(() => { try { const key = "${BURRITO_THEME_STORAGE_KEY}"; const saved = localStorage.getItem(key); const preference = saved === "light" || saved === "dark" || saved === "system" ? saved : "system"; const theme = preference === "system" ? (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark") : preference; document.documentElement.dataset.theme = theme; document.documentElement.style.colorScheme = theme; const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute("content", theme === "dark" ? "#070D0B" : "#F5F8F5"); } catch (_) { document.documentElement.dataset.theme = "dark"; } })();`;

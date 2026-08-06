@@ -1,13 +1,9 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/index.ts"],
+  entry: ["src/index.ts", "src/theme-script.ts"],
   format: ["esm", "cjs"],
   dts: true,
   clean: true,
   external: ["react", "react/jsx-runtime"],
-  banner: {
-    js: '"use client";',
-  },
 });
-

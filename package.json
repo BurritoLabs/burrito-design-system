@@ -18,6 +18,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./theme-script": {
+      "types": "./dist/theme-script.d.ts",
+      "import": "./dist/theme-script.js",
+      "require": "./dist/theme-script.cjs"
+    },
     "./tokens.css": "./dist/tokens.css",
     "./brand/icon-64.png": "./brand/icon-64.png",
     "./brand/icon-192.png": "./brand/icon-192.png",
@@ -45,4 +50,3 @@
   },
   "license": "UNLICENSED"
 }
-

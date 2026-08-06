@@ -7,11 +7,13 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import {
+  BURRITO_THEME_STORAGE_KEY,
+  burritoThemeBootstrapScript,
+} from "./theme-script";
 
 export type BurritoTheme = "light" | "dark";
 export type BurritoThemePreference = BurritoTheme | "system";
-
-export const BURRITO_THEME_STORAGE_KEY = "burrito:theme";
 
 const DARK_THEME_COLOR = "#070D0B";
 const LIGHT_THEME_COLOR = "#F5F8F5";
@@ -36,8 +38,6 @@ export function applyBurritoTheme(theme: BurritoTheme) {
   const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
   if (meta) meta.content = theme === "dark" ? DARK_THEME_COLOR : LIGHT_THEME_COLOR;
 }
-
-export const burritoThemeBootstrapScript = `(() => { try { const key = "${BURRITO_THEME_STORAGE_KEY}"; const saved = localStorage.getItem(key); const preference = saved === "light" || saved === "dark" || saved === "system" ? saved : "system"; const theme = preference === "system" ? (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark") : preference; document.documentElement.dataset.theme = theme; document.documentElement.style.colorScheme = theme; const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute("content", theme === "dark" ? "${DARK_THEME_COLOR}" : "${LIGHT_THEME_COLOR}"); } catch (_) { document.documentElement.dataset.theme = "dark"; } })();`;
 
 type BurritoThemeContextValue = {
   theme: BurritoTheme;
@@ -92,6 +92,8 @@ export function BurritoThemeProvider({ children }: { children: ReactNode }) {
   return <BurritoThemeContext.Provider value={value}>{children}</BurritoThemeContext.Provider>;
 }
 
+export { BURRITO_THEME_STORAGE_KEY, burritoThemeBootstrapScript };
+
 export function useBurritoTheme() {
   const context = useContext(BurritoThemeContext);
   if (!context) throw new Error("useBurritoTheme must be used inside BurritoThemeProvider");
@@ -130,4 +132,3 @@ function MoonIcon() {
     </svg>
   );
 }
-
