@@ -171,23 +171,28 @@ body {
   min-width: 0;
   align-items: baseline;
   gap: 6px;
-  font-size: 18px;
-  letter-spacing: -0.02em;
+  font-size: 20px;
+  letter-spacing: -0.05em;
   white-space: nowrap;
 }
 
 .bui-brand-wordmark strong {
   color: var(--bui-color-text);
-  font-weight: 700;
+  font-weight: 650;
 }
 
 .bui-brand-product {
   color: var(--bui-color-text-secondary);
-  font-weight: 500;
+  font-weight: 400;
+}
+
+.bui-brand-lockup-compact {
+  --bui-brand-icon-size: 20px;
 }
 
 .bui-brand-lockup-compact .bui-brand-wordmark {
   font-size: 16px;
+  gap: 5px;
 }
 
 .bui-theme-toggle {

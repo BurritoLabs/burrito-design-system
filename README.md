@@ -21,7 +21,7 @@ Import tokens once at the application root:
 import "@burritolabs/ui/tokens.css";
 ```
 
-Initialize the theme before hydration, then wrap client UI with `BurritoThemeProvider` and render `BurritoThemeSwitcher` in the product header. The switcher exposes System, Light, and Dark while keeping a 40 px desktop / 44 px mobile trigger.
+Initialize the theme before hydration, then wrap client UI with `BurritoThemeProvider` and render `BurritoThemeSwitcher` in the product header. The control follows the operating-system theme until the user makes a choice, then switches directly between Light and Dark with one click while keeping a 40 px desktop / 44 px mobile target.
 
 ## Governance
 
