@@ -159,7 +159,7 @@ body {
   display: inline-flex;
   min-width: 0;
   align-items: center;
-  gap: max(var(--bui-space-2), calc(var(--bui-brand-icon-size, 24px) * 0.25));
+  gap: 6px;
   color: var(--bui-color-text);
   font-family: var(--bui-font-ui);
   line-height: 1;
