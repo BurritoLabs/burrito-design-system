@@ -14,6 +14,7 @@
   --bui-color-text-inverse: #142019;
   --bui-color-border: rgba(225, 247, 233, 0.105);
   --bui-color-border-strong: rgba(225, 247, 233, 0.17);
+  --bui-color-shell-divider: rgba(225, 247, 233, 0.17);
   --bui-color-border-interactive: rgba(82, 196, 26, 0.42);
   --bui-color-brand: #52c41a;
   --bui-color-brand-hover: #64d82b;
@@ -64,6 +65,7 @@
   --bui-color-text-inverse: #eaf5eb;
   --bui-color-border: rgba(43, 78, 57, 0.12);
   --bui-color-border-strong: rgba(43, 78, 57, 0.2);
+  --bui-color-shell-divider: rgba(43, 78, 57, 0.2);
   --bui-color-border-interactive: rgba(47, 125, 12, 0.42);
   --bui-color-brand: #52c41a;
   --bui-color-brand-hover: #49ad17;

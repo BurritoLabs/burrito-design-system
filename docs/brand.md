@@ -15,3 +15,9 @@ The canonical mark is `brand/icon-1024.png`. The 64 px and 192 px files are deli
 - PWA icon: 192 px and 512 px or larger square PNG. Use `maskable` only after safe-area testing proves the mark is not clipped.
 - Apple/native app icon: derive from the 1024 px source through the platform asset catalog.
 - Social previews may include the mark, but a chain accent must never replace the Burrito brand color.
+
+## Navigation shell
+
+- Use `--bui-color-shell-divider` for the primary boundary below a top header and beside a desktop sidebar.
+- Draw each boundary once. Do not stack an adjacent border or a directional shadow on top of the divider.
+- Product applications may use a sidebar or a top-only header according to their information architecture. Marketing and company websites keep a horizontal website navigation; they should not imitate an application sidebar.
