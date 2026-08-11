@@ -5,9 +5,18 @@ The canonical mark is `brand/icon-1024.png`. The 64 px and 192 px files are deli
 ## Lockup and clear space
 
 - Use the word `Burrito` exactly. Add a product descriptor such as `Monitor`, `AI`, `Finder`, `Studio`, or `Labs` as a separate, lighter-weight word.
-- Standard product chrome uses a 24 px mark and an 18 px wordmark. Compact mobile chrome may use a 20 px mark and 16 px wordmark.
+- Primary desktop and mobile headers use a 24 px mark, a 20 px wordmark, and a 6 px gap between the mark and wordmark. Product descriptors use the same 20 px size with a lighter weight.
+- Use zero letter spacing for the primary wordmark and product descriptor so the lockup has the same width and rhythm in every product.
+- Do not use the compact `20/16` lockup in a primary mobile header. The compact variant is reserved for secondary surfaces where the full header geometry does not apply.
 - Preserve clear space around the mark equal to at least one quarter of its rendered width.
 - Keep the full lockup at the primary desktop sidebar/header origin. On mobile, keep it at the leading edge and do not place the theme switcher between the mark and product name.
+
+## Mobile header placement
+
+- When the row containing the brand is 56 px tall, use a 16 px leading inset.
+- For any other row height, use `(row height - 24 px) / 2` as the leading inset so the mark has equal space above and to its leading edge.
+- In a multi-row header, calculate placement from the row containing the brand rather than the total header height.
+- Account for the platform safe-area inset before applying the row calculation. Keep page-content padding independent from header-brand placement.
 
 ## Delivery assets
 
