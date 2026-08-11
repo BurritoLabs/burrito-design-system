@@ -18,6 +18,12 @@ The canonical mark is `brand/icon-1024.png`. The 64 px and 192 px files are deli
 - In a multi-row header, calculate placement from the row containing the brand rather than the total header height.
 - Account for the platform safe-area inset before applying the row calculation. Keep page-content padding independent from header-brand placement.
 
+## Tablet header placement
+
+- Apply the same mark, wordmark, gap, and height-derived inset rules at tablet breakpoints; do not restore a legacy logo compensation on wider mobile layouts.
+- A 56 px tablet row uses a 16 px leading inset, a 68 px row uses 22 px, a 72 px row uses 24 px, and a 76 px row uses 26 px.
+- Choose mobile, tablet, or desktop navigation from available space and input precision rather than user-agent detection. Touch-first editing tools may present a focused tablet companion instead of a precision desktop editor.
+
 ## Delivery assets
 
 - Browser favicon: 64 px PNG or an ICO generated from the same canonical mark.
