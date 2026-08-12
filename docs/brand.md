@@ -20,8 +20,9 @@ The canonical mark is `brand/icon-1024.png`. The 64 px and 192 px files are deli
 
 ## Tablet header placement
 
-- Apply the same mark, wordmark, gap, and height-derived inset rules at tablet breakpoints; do not restore a legacy logo compensation on wider mobile layouts.
-- A 56 px tablet row uses a 16 px leading inset, a 68 px row uses 22 px, a 72 px row uses 24 px, and a 76 px row uses 26 px.
+- Use a 56 px primary header row on touch-first phones and tablets, including portrait and landscape iPad layouts up to 1366 CSS pixels.
+- The primary row uses a 16 px leading inset with a 24 px mark, 20 px wordmark, and 6 px mark-to-wordmark gap. Do not restore legacy logo compensation on wider mobile layouts.
+- Search or product-navigation rows may remain below the primary row when the controls cannot fit safely, but they do not change the 56 px brand-and-actions row.
 - Choose mobile, tablet, or desktop navigation from available space and input precision rather than user-agent detection. Touch-first editing tools may present a focused tablet companion instead of a precision desktop editor.
 
 ## Delivery assets
