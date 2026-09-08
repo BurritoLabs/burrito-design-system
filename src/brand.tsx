@@ -6,6 +6,8 @@ export type BurritoBrandLockupProps = {
   iconSize?: number;
   className?: string;
   compact?: boolean;
+  /** Company wordmarks such as Burrito Labs keep both words equally prominent. */
+  productEmphasis?: "secondary" | "brand";
 };
 
 export function BurritoBrandLockup({
@@ -14,6 +16,7 @@ export function BurritoBrandLockup({
   iconSize = 24,
   className = "",
   compact = false,
+  productEmphasis = "secondary",
 }: BurritoBrandLockupProps) {
   const style = { "--bui-brand-icon-size": `${iconSize}px` } as CSSProperties;
   return (
@@ -21,9 +24,8 @@ export function BurritoBrandLockup({
       <img className="bui-brand-mark" src={iconSrc} alt="" aria-hidden="true" width={iconSize} height={iconSize} />
       <span className="bui-brand-wordmark">
         <strong>Burrito</strong>
-        {product ? <span className="bui-brand-product">{product}</span> : null}
+        {product ? <span className={`bui-brand-product${productEmphasis === "brand" ? " bui-brand-product-emphasized" : ""}`}>{product}</span> : null}
       </span>
     </span>
   );
 }
-

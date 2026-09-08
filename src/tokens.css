@@ -157,13 +157,22 @@ body {
   outline-offset: 2px;
 }
 
+@font-face {
+  font-family: "Burrito Brand";
+  src: url("../brand/montserrat-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 .bui-brand-lockup {
   display: inline-flex;
   min-width: 0;
   align-items: center;
   gap: 6px;
   color: var(--bui-color-text);
-  font-family: var(--bui-font-ui);
+  font-family: "Burrito Brand", Montserrat, sans-serif;
+  font-synthesis: none;
   line-height: 1;
   text-decoration: none;
 }
@@ -183,8 +192,26 @@ body {
   align-items: baseline;
   gap: 6px;
   font-size: 20px;
+  font-family: "Burrito Brand", Montserrat, sans-serif;
+  font-style: normal;
+  font-kerning: normal;
+  font-feature-settings: normal;
+  line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
+  /* Montserrat: ascent 968, descent 251, B bounds 0..700, units/em 1000.
+     Center B's ink, not its line box: -(968 - 251 - 700) / 2000 em. */
+  transform: translateY(-0.0085em);
+}
+
+.bui-brand-wordmark > strong,
+.bui-brand-product {
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  line-height: inherit;
+  letter-spacing: 0;
 }
 
 .bui-brand-wordmark strong {
@@ -195,6 +222,11 @@ body {
 .bui-brand-product {
   color: var(--bui-color-text-secondary);
   font-weight: 400;
+}
+
+.bui-brand-product-emphasized {
+  color: var(--bui-color-text);
+  font-weight: 650;
 }
 
 .bui-brand-lockup-compact {

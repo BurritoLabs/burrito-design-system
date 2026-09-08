@@ -4,19 +4,24 @@ The canonical mark is `brand/icon-1024.png`. The 64 px and 192 px files are deli
 
 ## Lockup and clear space
 
-- Use the word `Burrito` exactly. Add a product descriptor such as `Monitor`, `AI`, `Finder`, `Studio`, or `Labs` as a separate, lighter-weight word.
+- Use the word `Burrito` exactly, in Montserrat at weight 650. Add a product descriptor such as `Monitor`, `AI`, `Finder`, `Studio`, or `DEX` as a separate word at weight 400. Burrito Labs is the explicit exception: pass `productEmphasis="brand"` so `Labs` uses the same weight 650 and color as `Burrito`.
 - Primary desktop and mobile headers use a 24 px mark, a 20 px wordmark, and a 6 px gap between the mark and wordmark. Product descriptors use the same 20 px size with a lighter weight.
 - Use zero letter spacing for the primary wordmark and product descriptor so the lockup has the same width and rhythm in every product.
+- The word-to-product gap is also 6 px. Use the bundled `Burrito Brand` font face (the unmodified Montserrat Latin variable font) rather than a product's own font version. Do not force text widths through SVG `textLength`, horizontal scaling, or negative tracking.
+- Align the visible circular mark's center with the vertical midpoint of the visible uppercase `B`, with both words on the same baseline. The shared wordmark applies the font-metric correction `-0.0085em`: Montserrat uses 1000 units/em, ascent 968, descent 251, and B ink bounds 0..700. Do not add product-specific vertical transforms. Verify rendered ink alignment within half a CSS pixel after fonts load; bounding-box centering alone is insufficient.
 - Do not use the compact `20/16` lockup in a primary mobile header. The compact variant is reserved for secondary surfaces where the full header geometry does not apply.
 - Preserve clear space around the mark equal to at least one quarter of its rendered width.
 - Keep the full lockup at the primary desktop sidebar/header origin. On mobile, keep it at the leading edge and do not place the theme switcher between the mark and product name.
 
-## Mobile header placement
+## Primary header placement on every device
+
+- Use a 56 px brand row and a 16 px top/leading inset for desktop, tablet, and phone primary headers or sidebar brand rows. Measure from the viewport's usable top/left edge, not a centered content column. Keep website navigation and page-content max-width constraints independent of the brand anchor.
 
 - When the row containing the brand is 56 px tall, use a 16 px leading inset.
 - For any other row height, use `(row height - 24 px) / 2` as the leading inset so the mark has equal space above and to its leading edge.
 - In a multi-row header, calculate placement from the row containing the brand rather than the total header height.
 - Account for the platform safe-area inset before applying the row calculation. Keep page-content padding independent from header-brand placement.
+- Keep the full mark and wordmark visible at all supported widths, including narrow phones. Reflow secondary controls or use their existing overflow menu instead of hiding or shrinking the primary brand.
 
 ## Tablet header placement
 
