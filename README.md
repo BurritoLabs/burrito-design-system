@@ -2,6 +2,8 @@
 
 The shared code-first UI foundation for Burrito products. It owns Burrito brand assets, semantic light/dark design tokens, the two supported chain identities, theme persistence, and reusable React primitives.
 
+All existing and future Burrito company products use the [company-wide brand format](docs/brand.md) by default: the shared 24px/20px lockup, **-1px letter spacing**, 6px gaps, equal 16px primary top/left insets, and optical alignment with B. Burrito Labs keeps the same geometry and uses weight 650 for both words. New products adopt this standard from the start.
+
 ## Product boundary
 
 - Burrito brand: `#52C41A`

@@ -2,6 +2,12 @@
 
 The canonical mark is `brand/icon-1024.png`. The 64 px and 192 px files are delivery assets derived from the same mark. Products must not redraw, recolor, crop, stretch, or add chain colors to it.
 
+## Company-wide default
+
+The user confirmed on 2026-09-08 that this format applies to every existing and future Burrito company product. New websites, web applications, mobile/desktop applications, browser extensions, and other product interfaces adopt it from the start; the current product inventory is not an allowlist. Apply these rules to Burrito brand lockups, not to unrelated body text or customer-generated branding.
+
+Use the shared `BurritoBrandLockup` and bundled font rather than rebuilding the wordmark or choosing new per-product spacing. The approved baseline is version 0.3.1, commit `39e3914427310ab1c8412620b58b8512550cc165`; later shared versions must preserve this format unless the user explicitly changes the brand requirements. Burrito Labs differs only in descriptor weight and color as stated below. Do not ask the user to repeat the standard for a new Burrito product.
+
 ## Lockup and clear space
 
 - Use the word `Burrito` exactly, in Montserrat at weight 650. Add a product descriptor such as `Monitor`, `AI`, `Finder`, `Studio`, or `DEX` as a separate word at weight 400. Burrito Labs is the explicit exception: pass `productEmphasis="brand"` so `Labs` uses the same weight 650 and color as `Burrito`.
@@ -18,7 +24,7 @@ The canonical mark is `brand/icon-1024.png`. The 64 px and 192 px files are deli
 - Use a 56 px brand row and a 16 px top/leading inset for desktop, tablet, and phone primary headers or sidebar brand rows. Measure from the viewport's usable top/left edge, not a centered content column. Keep website navigation and page-content max-width constraints independent of the brand anchor.
 
 - When the row containing the brand is 56 px tall, use a 16 px leading inset.
-- For any other row height, use `(row height - 24 px) / 2` as the leading inset so the mark has equal space above and to its leading edge.
+- A secondary surface that is not the primary header/sidebar brand row may use `(row height - 24 px) / 2` as the leading inset to preserve equal top/leading clear space. This does not permit changing the primary 56 px row or its 16 px insets.
 - In a multi-row header, calculate placement from the row containing the brand rather than the total header height.
 - Account for the platform safe-area inset before applying the row calculation. Keep page-content padding independent from header-brand placement.
 - Keep the full mark and wordmark visible at all supported widths, including narrow phones. Reflow secondary controls or use their existing overflow menu instead of hiding or shrinking the primary brand.
@@ -29,6 +35,10 @@ The canonical mark is `brand/icon-1024.png`. The 64 px and 192 px files are deli
 - The primary row uses a 16 px leading inset with a 24 px mark, 20 px wordmark, and 6 px mark-to-wordmark gap. Do not restore legacy logo compensation on wider mobile layouts.
 - Search or product-navigation rows may remain below the primary row when the controls cannot fit safely, but they do not change the 56 px brand-and-actions row.
 - Choose mobile, tablet, or desktop navigation from available space and input precision rather than user-agent detection. Touch-first editing tools may present a focused tablet companion instead of a precision desktop editor.
+
+## Native product interfaces
+
+Web dimensions above are CSS pixels. Native interfaces use the corresponding logical units (points or dp), not physical screen pixels: 56-unit primary brand row, 24-unit icon, 20-unit type/line height, -1-unit letter spacing, 6-unit mark/text and word/product gaps, and 16-unit top/leading insets after the safe area. Use the same Montserrat font file and weights. Check the rendered mark and B ink centers on the target platform; do not assume native text-container centering provides optical alignment.
 
 ## Delivery assets
 

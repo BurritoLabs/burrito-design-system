@@ -1,5 +1,7 @@
 # Adoption order
 
+The list below records the original rollout order. Every existing and future Burrito company product adopts the [shared brand format](brand.md) by default; new products are not limited to this list and must use the approved -1px tracking from the start.
+
 1. Burrito Monitor — first production pilot.
 2. Burrito WebApp — protect its diverged local checkout; integrate through a reviewed isolated branch.
 3. Burrito AI.
