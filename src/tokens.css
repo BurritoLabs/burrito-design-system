@@ -197,7 +197,7 @@ body {
   font-kerning: normal;
   font-feature-settings: normal;
   line-height: 1;
-  letter-spacing: 0;
+  letter-spacing: -1px;
   white-space: nowrap;
   /* Montserrat: ascent 968, descent 251, B bounds 0..700, units/em 1000.
      Center B's ink, not its line box: -(968 - 251 - 700) / 2000 em. */
@@ -211,7 +211,7 @@ body {
   font-size: inherit;
   font-style: inherit;
   line-height: inherit;
-  letter-spacing: 0;
+  letter-spacing: -1px;
 }
 
 .bui-brand-wordmark strong {
